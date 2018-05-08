@@ -14,7 +14,8 @@ export default class GatewayDest extends React.Component {
     component: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.func
-    ])
+    ]),
+    onChange: PropTypes.func
   };
 
   constructor(props, context) {
@@ -28,6 +29,10 @@ export default class GatewayDest extends React.Component {
 
   componentWillMount() {
     this.gatewayRegistry.addContainer(this.props.name, this);
+  }
+
+  componentDidUpdate() {
+    this.props.onChange && this.props.onChange();
   }
 
   componentWillUnmount() {
