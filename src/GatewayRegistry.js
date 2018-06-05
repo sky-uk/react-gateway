@@ -40,7 +40,7 @@ export default class GatewayRegistry {
   register(name, child) {
     this._children[name] = this._children[name] || {};
 
-    const gatewayId = `${name}_${this._currentId}`;
+    const gatewayId = name; //`${name}_${this._currentId}`; - use always the same container?
     this._children[name][gatewayId] = child;
     this._currentId += 1;
 
